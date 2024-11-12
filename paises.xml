@@ -1,51 +1,51 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Paises>
     <Pais>
-        <Nombre>Belice</Nombre>
-        <Presidente>Froyla Tzalam</Presidente>
-        <PIB>1987000000</PIB>
-        <CoeficienteDeGini>53.3</CoeficienteDeGini>
+        <nombre>Belice</nombre>
+        <presidente>Froyla Tzalam</presidente>
+        <pib>1987000000</pib>
+        <coeficienteDeGini>53.3</coeficienteDeGini>
     </Pais>
     <Pais>
-        <Nombre>El Salvador</Nombre>
-        <Presidente>Nayib Bukele</Presidente>
-        <PIB>74818000000</PIB>
-        <CoeficienteDeGini>38.8</CoeficienteDeGini>
+        <nombre>El Salvador</nombre>
+        <presidente>Nayib Bukele</presidente>
+        <pib>74818000000</pib>
+        <coeficienteDeGini>38.8</coeficienteDeGini>
     </Pais>
     <Pais>
-        <Nombre>Guatemala</Nombre>
-        <Presidente>Alejandro Giammattei</Presidente>
-        <PIB>185474000000</PIB>
-        <CoeficienteDeGini>48.3</CoeficienteDeGini>
+        <nombre>Guatemala</nombre>
+        <presidente>Alejandro Giammattei</presidente>
+        <pib>185474000000</pib>
+        <coeficienteDeGini>48.3</coeficienteDeGini>
     </Pais>
     <Pais>
-        <Nombre>Honduras</Nombre>
-        <Presidente>Xiomara Castro</Presidente>
-        <PIB>85625000000</PIB>
-        <CoeficienteDeGini>48.2</CoeficienteDeGini>
+        <nombre>Honduras</nombre>
+        <presidente>Xiomara Castro</presidente>
+        <pib>85625000000</pib>
+        <coeficienteDeGini>48.2</coeficienteDeGini>
     </Pais>
     <Pais>
-        <Nombre>Nicaragua</Nombre>
-        <Presidente>Daniel Ortega</Presidente>
-        <PIB>47770000000</PIB>
-        <CoeficienteDeGini>46.2</CoeficienteDeGini>
+        <nombre>Nicaragua</nombre>
+        <presidente>Daniel Ortega</presidente>
+        <pib>47770000000</pib>
+        <coeficienteDeGini>46.2</coeficienteDeGini>
     </Pais>
     <Pais>
-        <Nombre>México</Nombre>
-        <Presidente>Andrés Manuel López Obrador</Presidente>
-        <PIB>2890685000000</PIB>
-        <CoeficienteDeGini>45.4</CoeficienteDeGini>
+        <nombre>México</nombre>
+        <presidente>Andrés Manuel López Obrador</presidente>
+        <pib>2890685000000</pib>
+        <coeficienteDeGini>45.4</coeficienteDeGini>
     </Pais>
     <Pais>
-        <Nombre>Panamá</Nombre>
-        <Presidente>Laurentino Cortizo</Presidente>
-        <PIB>128500000000</PIB>
-        <CoeficienteDeGini>50.9</CoeficienteDeGini>
+        <nombre>Panamá</nombre>
+        <presidente>Laurentino Cortizo</presidente>
+        <pib>128500000000</pib>
+        <coeficienteDeGini>50.9</coeficienteDeGini>
     </Pais>
     <Pais>
-        <Nombre>Costa Rica</Nombre>
-        <Presidente>Rodrigo Chaves</Presidente>
-        <PIB>129950000000</PIB>
-        <CoeficienteDeGini>47.2</CoeficienteDeGini>
+        <nombre>Costa Rica</nombre>
+        <presidente>Rodrigo Chaves</presidente>
+        <pib>129950000000</pib>
+        <coeficienteDeGini>47.2</coeficienteDeGini>
     </Pais>
 </Paises>

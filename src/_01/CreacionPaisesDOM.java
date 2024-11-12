@@ -14,7 +14,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Text;
 
-public class CreacionPaises {
+public class CreacionPaisesDOM {
 
     public static void main(String[] args) throws Exception {
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -34,22 +34,22 @@ public class CreacionPaises {
             Element elemPais = doc.createElement("Pais");
             doc.getDocumentElement().appendChild(elemPais);
 
-            Element elemNombrePais = doc.createElement("Nombre");
+            Element elemNombrePais = doc.createElement("nombre");
             elemPais.appendChild(elemNombrePais);
             Text textoNombre = doc.createTextNode(paises[i]);
             elemNombrePais.appendChild(textoNombre);
 
-            Element elemPresidente = doc.createElement("Presidente");
+            Element elemPresidente = doc.createElement("presidente");
             elemPais.appendChild(elemPresidente);
             Text textoPresidente = doc.createTextNode(presidentes[i]);
             elemPresidente.appendChild(textoPresidente);
 
-            Element elemPib = doc.createElement("PIB");
+            Element elemPib = doc.createElement("pib");
             elemPais.appendChild(elemPib);
             Text textoPib = doc.createTextNode(pib[i].toString());
             elemPib.appendChild(textoPib);
 
-            Element elemGini = doc.createElement("CoeficienteDeGini");
+            Element elemGini = doc.createElement("coeficienteDeGini");
             elemPais.appendChild(elemGini);
             Text textoGini = doc.createTextNode(coGini[i].toString());
             elemGini.appendChild(textoGini);
