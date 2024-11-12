@@ -22,13 +22,11 @@ public class ListaPaises {
 		this.paises = paises;
 	}
 
-	@Override
-	public String toString() {
+	public void imprimirListaPaises() {
 		System.out.println("ListaPaises:");
 		for (Pais pais : paises) {
 			System.out.println(pais);
 		}
-	    return "";
 	}
 
 

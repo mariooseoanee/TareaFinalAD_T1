@@ -31,8 +31,9 @@ public class LecturaXMLconXStream {
 		// atributo List<Pais>, y la clase del tipo de objeto que guarda la lista)
 		xs.addImplicitCollection(ListaPaises.class, "paises", Pais.class);
 
-		ListaPaises lista = (ListaPaises) xs.fromXML(archivoXML);
+		ListaPaises lista = new ListaPaises();
+		lista = (ListaPaises) xs.fromXML(archivoXML);
 
-		System.out.println(lista);
+		lista.imprimirListaPaises();
 	}
 }
