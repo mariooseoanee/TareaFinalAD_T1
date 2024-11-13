@@ -6,7 +6,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.SQLSyntaxErrorException;
-import java.util.Scanner;
 
 import _02.Pais;
 
@@ -56,7 +55,7 @@ public class BaseDatosDAO {
 			sentencia.setDouble(4, pais.getCoeficienteDeGini());
 
 			sentencia.execute();
-			System.out.println("País insertado correctamente :" + pais.getNombre());
+			System.out.println("País insertado correctamente: " + pais.getNombre());
 		} else {
 			System.out.println("No se ha podido insertar el pais (Primary Key REPETIDA)");
 		}
@@ -80,38 +79,6 @@ public class BaseDatosDAO {
 		conexion.close();
 	}
 
-	public void modificarPais(Pais pais) throws SQLException {
-		String url = "jdbc:hsqldb:file:./src/BDPaisesHSQL";
-		Connection conexion = DriverManager.getConnection(url);
-		PreparedStatement sentencia;
-		Scanner sc = new Scanner(System.in);
-
-		if (existePais(pais)) {
-			String nuevoPresidente;
-			Float nuevoPib;
-			Double nuevoCoeficienteGini;
-			System.out.print("Introduce el nuevo nombre del presidente: ");
-			nuevoPresidente = sc.nextLine();
-			System.out.print("Introduce el nuevo PIB del pais: ");
-			nuevoPib = sc.nextFloat();
-			System.out.print("Introduce el nuevo coeficiente de gini: ");
-			nuevoCoeficienteGini = sc.nextDouble();
-
-			sentencia = conexion.prepareStatement(
-					"UPDATE FROM PAISES SET PRESIDENTE = ?, PIB = ?, COEFICIENTEGINI = ? WHERE NOMBRE = ? ");
-			sentencia.setString(1, nuevoPresidente);
-			sentencia.setFloat(2, nuevoPib);
-			sentencia.setDouble(3, nuevoCoeficienteGini);
-			sentencia.setString(4, pais.getNombre());
-			sentencia.executeUpdate();
-
-		} else {
-			System.out.println("El país que se quiere modificar no existe en la BBDD");
-		}
-		sc.close();
-		conexion.close();
-	}
-
 	public void mostrarTablaPaises() throws SQLException {
 		String url = "jdbc:hsqldb:file:./src/BDPaisesHSQL";
 		Connection conexion = DriverManager.getConnection(url);
@@ -119,6 +86,7 @@ public class BaseDatosDAO {
 		ResultSet resultado;
 
 		sentencia = conexion.prepareStatement("SELECT * FROM PAISES");
+		System.out.println("BBDD:");
 		resultado = sentencia.executeQuery();
 
 		boolean hayDatos = false;
@@ -132,7 +100,40 @@ public class BaseDatosDAO {
 		if (!hayDatos) {
 			System.out.println("La tabla PAISES está vacía.");
 		}
+		System.out.println("-------------------------------------------------------------------------------");
 
+		conexion.close();
+	}
+
+	public void incrementoPIB(Pais pais) throws SQLException {
+		String url = "jdbc:hsqldb:file:./src/BDPaisesHSQL";
+		Connection conexion = DriverManager.getConnection(url);
+		PreparedStatement sentencia;
+
+		sentencia = conexion.prepareStatement("UPDATE PAISES SET PIB = PIB + 10000000 WHERE NOMBRE = ?");
+		sentencia.setString(1, pais.getNombre());
+		sentencia.executeUpdate();
+		
+		System.out.println("El país " + pais.getNombre() + "ha incrementado su PIB en 10 millones");
+
+		conexion.close();
+
+	}
+
+	public void reduccionCoGini() throws SQLException {
+		String url = "jdbc:hsqldb:file:./src/BDPaisesHSQL";
+		Connection conexion = DriverManager.getConnection(url);
+		PreparedStatement sentencia;
+
+		sentencia = conexion.prepareStatement("UPDATE PAISES SET COEFICIENTEGINI = COEFICIENTEGINI * 2/3 "
+				+ "WHERE NOMBRE = ? OR NOMBRE = ? OR NOMBRE = ?");
+		sentencia.setString(1, "México");
+		sentencia.setString(2, "Honduras");
+		sentencia.setString(3, "El Salvador");
+		sentencia.executeUpdate();
+
+		System.out.println("Los paises México, Honduras y El Salvador hanS reducido su Coeficiente de Gini en 1/3");
+		
 		conexion.close();
 	}
 

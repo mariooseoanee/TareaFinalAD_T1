@@ -1,26 +1,25 @@
 package _05;
 
+import java.io.FileNotFoundException;
 import java.sql.SQLException;
 import java.sql.SQLSyntaxErrorException;
-import java.util.ArrayList;
-import java.util.List;
 
+
+import _02.ListaPaises;
 import _02.Pais;
-
 public class MainBBDD {
 
-	public static void main(String[] args) throws SQLSyntaxErrorException, SQLException {
+	public static void main(String[] args) throws SQLSyntaxErrorException, SQLException, FileNotFoundException {
 		
 		BaseDatosDAO dao = new BaseDatosDAO();
-
-		List<Pais> lista = new ArrayList<Pais>();
-		// preguntar a manu como accedemos a los datos de la lista de paises del XML
-		lista.add(new Pais("Argentina", "Alberto Fernandez", 450000L, 40.0));
-		lista.add(new Pais("Brasil", "Lula da Silva", 2200000L, 50.0));
+		
+		// cojemos los datos del XML 
+		ListaPaises listaPaises = new ListaPaises().leerXMLconXStream("paises.xml");
 		
 		dao.crearTablaPaises();
 		
-		for (Pais pais : lista) {
+		
+		for (Pais pais : listaPaises.getPaises()) {
 			dao.insertarPais(pais);
 		}
 		
@@ -32,8 +31,6 @@ public class MainBBDD {
 		System.out.println("Existe el país introducido en la BBDD: " + dao.existePais(paisBusqueda));
 		
 		
-		
-		
 		// ejemplo de insertar otro pais
 		Pais paisEjemplo = new Pais("Argelia", "Abdelmadjid Tebboune",  221957L,  27.6);
 		dao.insertarPais(paisEjemplo);
@@ -42,6 +39,18 @@ public class MainBBDD {
 				
 		// ejemplo de borrar pais
 		dao.eliminarPais(paisEjemplo);
+		
+		dao.mostrarTablaPaises();
+		
+		// todos los paises incrementan su PIB
+		for (Pais pais : listaPaises.getPaises()) {
+			dao.incrementoPIB(pais);
+		}
+		
+		dao.mostrarTablaPaises();
+		
+		// solo los paises Mexico, Honduras y El Salvador disminuyen su coeficiente de gini
+		dao.reduccionCoGini();
 		
 		dao.mostrarTablaPaises();
 		
