@@ -43,9 +43,7 @@ public class MainBBDD {
 		dao.mostrarTablaPaises();
 		
 		// todos los paises incrementan su PIB
-		for (Pais pais : listaPaises.getPaises()) {
-			dao.incrementoPIB(pais);
-		}
+		dao.incrementoPIB();
 		
 		dao.mostrarTablaPaises();
 		

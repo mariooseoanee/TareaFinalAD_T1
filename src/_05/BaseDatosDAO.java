@@ -13,7 +13,7 @@ import _02.Pais;
 public class BaseDatosDAO {
 
 	public void crearTablaPaises() throws SQLException, SQLSyntaxErrorException {
-		String url = "jdbc:hsqldb:file:./src/BDPaisesHSQL";
+		String url = "jdbc:hsqldb:file:./BDPaisesHSQL";
 		Connection conexion = DriverManager.getConnection(url);
 		PreparedStatement sentencia;
 
@@ -25,7 +25,7 @@ public class BaseDatosDAO {
 	}
 
 	public boolean existePais(Pais pais) throws SQLException {
-		String url = "jdbc:hsqldb:file:./src/BDPaisesHSQL";
+		String url = "jdbc:hsqldb:file:./BDPaisesHSQL";
 		Connection conexion = DriverManager.getConnection(url);
 		PreparedStatement sentencia;
 		ResultSet resultado;
@@ -43,7 +43,7 @@ public class BaseDatosDAO {
 	}
 
 	public void insertarPais(Pais pais) throws SQLException {
-		String url = "jdbc:hsqldb:file:./src/BDPaisesHSQL";
+		String url = "jdbc:hsqldb:file:./BDPaisesHSQL";
 		Connection conexion = DriverManager.getConnection(url);
 		PreparedStatement sentencia;
 
@@ -63,7 +63,7 @@ public class BaseDatosDAO {
 	}
 
 	public void eliminarPais(Pais pais) throws SQLException {
-		String url = "jdbc:hsqldb:file:./src/BDPaisesHSQL";
+		String url = "jdbc:hsqldb:file:./BDPaisesHSQL";
 		Connection conexion = DriverManager.getConnection(url);
 		PreparedStatement sentencia;
 
@@ -80,7 +80,7 @@ public class BaseDatosDAO {
 	}
 
 	public void mostrarTablaPaises() throws SQLException {
-		String url = "jdbc:hsqldb:file:./src/BDPaisesHSQL";
+		String url = "jdbc:hsqldb:file:./BDPaisesHSQL";
 		Connection conexion = DriverManager.getConnection(url);
 		PreparedStatement sentencia;
 		ResultSet resultado;
@@ -105,23 +105,22 @@ public class BaseDatosDAO {
 		conexion.close();
 	}
 
-	public void incrementoPIB(Pais pais) throws SQLException {
-		String url = "jdbc:hsqldb:file:./src/BDPaisesHSQL";
+	public void incrementoPIB() throws SQLException {
+		String url = "jdbc:hsqldb:file:./BDPaisesHSQL";
 		Connection conexion = DriverManager.getConnection(url);
 		PreparedStatement sentencia;
 
-		sentencia = conexion.prepareStatement("UPDATE PAISES SET PIB = PIB + 10000000 WHERE NOMBRE = ?");
-		sentencia.setString(1, pais.getNombre());
+		sentencia = conexion.prepareStatement("UPDATE PAISES SET PIB = PIB + 10000000");
 		sentencia.executeUpdate();
 		
-		System.out.println("El país " + pais.getNombre() + "ha incrementado su PIB en 10 millones");
+		System.out.println("Todos los países han incrementado su PIB en 10 millones");
 
 		conexion.close();
 
 	}
 
 	public void reduccionCoGini() throws SQLException {
-		String url = "jdbc:hsqldb:file:./src/BDPaisesHSQL";
+		String url = "jdbc:hsqldb:file:./BDPaisesHSQL";
 		Connection conexion = DriverManager.getConnection(url);
 		PreparedStatement sentencia;
 
