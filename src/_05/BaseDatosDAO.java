@@ -119,21 +119,29 @@ public class BaseDatosDAO {
 
 	}
 
-	public void reduccionCoGini() throws SQLException {
+	public void reduccionCoGini(Pais pais) throws SQLException {
 		String url = "jdbc:hsqldb:file:./BDPaisesHSQL";
 		Connection conexion = DriverManager.getConnection(url);
 		PreparedStatement sentencia;
-
-		sentencia = conexion.prepareStatement("UPDATE PAISES SET COEFICIENTEGINI = COEFICIENTEGINI * 2/3 "
-				+ "WHERE NOMBRE = ? OR NOMBRE = ? OR NOMBRE = ?");
-		sentencia.setString(1, "México");
-		sentencia.setString(2, "Honduras");
-		sentencia.setString(3, "El Salvador");
-		sentencia.executeUpdate();
-
-		System.out.println("Los paises México, Honduras y El Salvador hanS reducido su Coeficiente de Gini en 1/3");
 		
+		String[] paisesReducen = {"México", "Honduras", "El Salvador"};
+		
+		for (int i = 0; i < paisesReducen.length; i++) {
+	
+			if (pais.getNombre().equals(paisesReducen[i])) {
+				
+				sentencia = conexion.prepareStatement("UPDATE PAISES SET COEFICIENTEGINI = COEFICIENTEGINI * 2/3 "
+						+ "WHERE NOMBRE = ?");
+				sentencia.setString(1, pais.getNombre());
+				sentencia.executeUpdate();
+				System.out.println("El pais " + pais.getNombre() + " ha reducido su Coeficiente de Gini en 1/3");
+			}
+			
+		}
 		conexion.close();
+
+
+		
 	}
 
 }

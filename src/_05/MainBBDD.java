@@ -47,8 +47,11 @@ public class MainBBDD {
 		
 		dao.mostrarTablaPaises();
 		
-		// solo los paises Mexico, Honduras y El Salvador disminuyen su coeficiente de gini
-		dao.reduccionCoGini();
+		// solo los paises Mexico, Honduras y El Salvador disminuyen su coeficiente de gini (recorremos todos los paises de la bbdd)
+		for (Pais pais : listaPaises.getPaises()) {
+			dao.reduccionCoGini(pais);
+		}
+		
 		
 		dao.mostrarTablaPaises();
 		
