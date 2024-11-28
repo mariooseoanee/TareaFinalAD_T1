@@ -57,7 +57,7 @@ public class BaseDatosDAO {
 			sentencia.execute();
 			System.out.println("País insertado correctamente: " + pais.getNombre());
 		} else {
-			System.out.println("No se ha podido insertar el pais (Primary Key REPETIDA)");
+			System.out.println("No se ha podido insertar el pais " + pais.getNombre() + " (Primary Key REPETIDA)");
 		}
 		conexion.close();
 	}
